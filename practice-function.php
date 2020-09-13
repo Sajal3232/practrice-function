@@ -1,19 +1,22 @@
 <?php
-print_r($_POST);
 
 
+$result="";
 if(isset($_POST["btn"])){
     function findWordAndCharecter(){
-        $total_strings= $_POST["given_strings"];
-        $data=[];
-     
-       $data["totalword"]= str_word_count($total_strings);
-       $data["totalcharacter"]=strlen($total_strings);
-       return $data;
+        $givenlength=$_POST["given_password"];
+        $data=["@","#","$","a","A","&","*","P","p","Z","d","l"];
+        $pass='';
+        for($i=1; $i<=$givenlength; $i++){
+            $index=rand(0,11);
+            $pass.=$data[$index];
+            
+        }
+        return $pass;
      
      }
      
-     $data=findWordAndCharecter();
+     $result=findWordAndCharecter();
      
 }
 
@@ -51,7 +54,7 @@ if(isset($_POST["btn"])){
 ?>
 
 
-<form action="" method="POST">
+<!-- <form action="" method="POST">
   <table>
   <tr>
       <td>Enter the string</td>
@@ -65,8 +68,25 @@ if(isset($_POST["btn"])){
   </table>
 </form>
 <hr/>
-<h2>number of charecter:<?php if(isset($data["totalcharacter"])){echo $data["totalcharacter"];}?></h2>
-<h2>number of words:<?php if(isset($data["totalword"])){echo $data["totalword"];}?></h2>
+<h2>number of charecter:<?php// if(isset($data["totalcharacter"])){echo $data["totalcharacter"];}?></h2>
+<h2>number of words:<?php //if(isset($data["totalword"])){echo $data["totalword"];}?></h2>
+ -->
+
+ <form action="" method="POST">
+  <table>
+  <tr>
+      <td>Enter the pass</td>
+      <td><input type="text" name="given_password"></td>
+  </tr>
+
+  <tr>
+      <td></td>
+      <td><input type="submit" name="btn" value="Submit"></td>
+  </tr>
+  </table>
+</form>
+<hr/>
+<h2>password is:<?php echo $result;?></h2>
 
 
 
